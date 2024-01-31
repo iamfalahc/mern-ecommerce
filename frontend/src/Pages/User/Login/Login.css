@@ -1,0 +1,22 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 25%;
+  margin-top: 90px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+h1{
+    text-align: center;
+}
+span{
+    margin-top: 14px;
+    text-align: center;
+}
+span a{
+    margin-left: 5px;
+}
