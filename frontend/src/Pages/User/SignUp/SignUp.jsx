@@ -1,14 +1,13 @@
 import React from "react";
-// import "./Login.css";
+import "./SignUp.css";
 import Input from "../../../Components/InputField/Input";
 import Button from "../../../Components/Button/Button";
 import FormCard from "../../../Components/FormCard/FormCard";
 
-function Login() {
+function SignUp() {
   return (
     <div className="page">
-    
-      <FormCard title={"Login"} type={"Log In"}>
+      <FormCard title={"Sign Up"} type={"Sign Up"}>
         <Input
           label="User Name"
           placeholder="User Name"
@@ -23,12 +22,21 @@ function Login() {
           id="loginPassword"
           isRequired={true}
           minLength={8}
+
         />
-        <Button buttonName="Login" variant={"primary"} />
+           <Input
+          label="Confirm Password"
+          placeholder="Confirm Password"
+          type="password"
+          id="loginConfirmPassword"
+          isRequired={true}
+          minLength={8}
+
+        />
+        <Button buttonName="Sign Up" variant={"primary"} />
       </FormCard>
-     
     </div>
   );
 }
 
-export default Login;
+export default SignUp;

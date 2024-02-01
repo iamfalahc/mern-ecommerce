@@ -3,7 +3,7 @@
     flex-direction: column;
     gap: 10px;    
 }
-input{
+.input-container input{
     padding: 10px;
     font-size: 14px;
     border-radius: 6px;
