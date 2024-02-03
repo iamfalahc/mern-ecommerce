@@ -11,13 +11,12 @@ function Input(props) {
     <div className="input-container">
       <label htmlFor={props.id}>{props.label}</label>
       <input
-        // minLength={props.minLength}
-        // required={props.isRequired}
         type={props.type}
         placeholder={props.placeholder}
         id={props.id}
         onChange={handleInputs}
       />
+      <span className="message">{props.errorMessage}</span>
     </div>
   );
 }

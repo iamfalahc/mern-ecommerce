@@ -3,26 +3,40 @@ import React, { useEffect, useState } from "react";
 import Input from "../../../Components/InputField/Input";
 import Button from "../../../Components/Button/Button";
 import FormCard from "../../../Components/FormCard/FormCard";
-import { userNameValidation,userPasswordValidation} from "../../../Utils/validation.js";
+import {
+  userNameValidation,
+  userPasswordValidation,
+} from "../../../Utils/validation.js";
 
 function Login() {
   const [inputs, setInputs] = useState({
     fname: "",
-    password: ""
+    password: "",
   });
+  const [errors,setErrors] = useState({
+    fname: "",
+    password: "",
+  })
+
   const onLogin = (event) => {
     // const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
     console.log("login");
     event.preventDefault();
-    userNameValidation(inputs.fname)
-    userPasswordValidation(inputs.password)
+    setErrors((preValue)=>{
+      return{...preValue,"fname":userNameValidation(inputs.fname)}
+    });
+    setErrors((preValue)=>{
+      return{...preValue,"password":userPasswordValidation(inputs.password)}
+
+    });
+    
   };
   useEffect(() => {
-    console.log(inputs)
+    console.log(errors)
+  }, [errors])
   
-   
-  }, [inputs.fname])
   
+
   return (
     <div className="page">
       <FormCard title={"Login"} type={"Log In"} handleSubmit={onLogin}>
@@ -34,6 +48,8 @@ function Login() {
           isRequired={true}
           name="fname"
           setValue={setInputs}
+          errorMessage={errors.fname}
+
         />{" "}
         <Input
           label="Password"
@@ -44,6 +60,7 @@ function Login() {
           minLength={8}
           name="password"
           setValue={setInputs}
+          errorMessage={errors.password}
         />
         <Button buttonName="Login" variant={"primary"} />
       </FormCard>
