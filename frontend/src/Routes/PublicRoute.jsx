@@ -2,7 +2,7 @@ import {Route, Routes} from "react-router-dom"
 import React from 'react'
 import Login from "../Pages/User/Login/Login"
 import SignUp from "../Pages/User/SignUp/SignUp"
-import UserHome from "../Pages/User/UsreHome/UserHome"
+import UserHome from "../Pages/User/UserHome/UserHome"
 
 function PublicRoute() {
   return (

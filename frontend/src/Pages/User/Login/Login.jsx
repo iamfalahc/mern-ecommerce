@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import Input from "../../../Components/InputField/Input";
 import Button from "../../../Components/Button/Button";
 import FormCard from "../../../Components/FormCard/FormCard";
+import { useNavigate } from 'react-router-dom';
+
 import {
   userNameValidation,
   userPasswordValidation,
@@ -17,9 +19,9 @@ function Login() {
     fname: "",
     password: "",
   })
+  const navigate = useNavigate();
 
   const onLogin = (event) => {
-    // const regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
     console.log("login");
     event.preventDefault();
     setErrors((preValue)=>{
@@ -29,6 +31,7 @@ function Login() {
       return{...preValue,"password":userPasswordValidation(inputs.password)}
 
     });
+navigate('/');
     
   };
   useEffect(() => {

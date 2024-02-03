@@ -1,0 +1,12 @@
+.product-card{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+.product-price{
+    text-align: left;
+}
+.product-name{
+    text-align: left;
+   
+}
