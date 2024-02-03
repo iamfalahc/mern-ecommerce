@@ -1,9 +1,10 @@
 import React from 'react'
+import Navbar from '../../../Components/Navbar/Navbar'
 
 function UserHome() {
   return (
-    <div>
-      User Home
+    <div className='user-home-container'>
+    <Navbar />
     </div>
   )
 }

@@ -2,12 +2,14 @@ import React from "react";
 import "./FormCard.css";
 import { Link } from "react-router-dom";
 
-function FormCard({children, title, type}) {
+function FormCard({children, title, type,handleSubmit }) {
+
+
   return (
     <div className="login-container">
     <h1>{title}</h1>
 
-      <form action="">
+      <form action="" onSubmit={handleSubmit}>
         {children}
       </form>
       
