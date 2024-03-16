@@ -1,51 +1,54 @@
-const products =[{
-    id:"1",
-    name:"product name",
-    img:"https://brownliving.in/cdn/shop/products/sunflowers-biodegradable-eco-friendly-phone-case-mobile-cover-snflwr-13-001-tech-accessories-brown-living-980329_800x.jpg?v=1682968047",
-    price:200,
-    category:"silicon"
-},{
-    id:"2",
-    name:"product name",
-    img:"https://brownliving.in/cdn/shop/products/sunflowers-biodegradable-eco-friendly-phone-case-mobile-cover-snflwr-13-001-tech-accessories-brown-living-980329_800x.jpg?v=1682968047://images.dailyobjects.com/marche/product-images/1101/dailyobjects-beak-breaker-stride-2-0-case-cover-for-iphone-15-images/DailyObjects-Beak-Breaker-Stride-2-0-Case-Cover-For-iPhone-15-2.png?tr=cm-pad_resize,v-2,w-312,h-385,dpr-1",
-    price:200,
-    category:"silicon"
-},{
-    id:"3",
-    name:"product name",
-    img:"https://images.dailyobjects.com/marche/product-images/1101/dailyobjects-beak-breaker-stride-2-0-case-cover-for-iphone-15-images/DailyObjects-Beak-Breaker-Stride-2-0-Case-Cover-For-iPhone-15-2.png?tr=cm-pad_resize,v-2,w-312,h-385,dpr-1",
-    price:200,
-    category:"silicon"
-},{
-    id:"4",
-    name:"product name",
-    img:"https://images.dailyobjects.com/marche/product-images/1101/dailyobjects-beak-breaker-stride-2-0-case-cover-for-iphone-15-images/DailyObjects-Beak-Breaker-Stride-2-0-Case-Cover-For-iPhone-15-2.png?tr=cm-pad_resize,v-2,w-312,h-385,dpr-1",
-    price:200,
-    category:"silicon"
-},{
-    id:"5",
-    name:"product name",
-    img:"https://images.dailyobjects.com/marche/product-images/1101/dailyobjects-beak-breaker-stride-2-0-case-cover-for-iphone-15-images/DailyObjects-Beak-Breaker-Stride-2-0-Case-Cover-For-iPhone-15-2.png?tr=cm-pad_resize,v-2,w-312,h-385,dpr-1",
-    price:200,
-    category:"silicon"
-},{
-    id:"6",
-    name:"product name",
-    img:"https://images.dailyobjects.com/marche/product-images/1101/dailyobjects-beak-breaker-stride-2-0-case-cover-for-iphone-15-images/DailyObjects-Beak-Breaker-Stride-2-0-Case-Cover-For-iPhone-15-2.png?tr=cm-pad_resize,v-2,w-312,h-385,dpr-1",
-    price:200,
-    category:"silicon"
-},{
-    id:"7",
-    name:"product name",
-    img:"https://images.dailyobjects.com/marche/product-images/1101/dailyobjects-beak-breaker-stride-2-0-case-cover-for-iphone-15-images/DailyObjects-Beak-Breaker-Stride-2-0-Case-Cover-For-iPhone-15-2.png?tr=cm-pad_resize,v-2,w-312,h-385,dpr-1",
-    price:200,
-    category:"silicon"
-},{
-    id:"8",
-    name:"product name",
-    img:"https://images.dailyobjects.com/marche/product-images/1101/dailyobjects-beak-breaker-stride-2-0-case-cover-for-iphone-15-images/DailyObjects-Beak-Breaker-Stride-2-0-Case-Cover-For-iPhone-15-2.png?tr=cm-pad_resize,v-2,w-312,h-385,dpr-1",
-    price:200,
-    category:"silicon"
-}] 
-    
-export {products}
+const products = [
+  {
+    id: "1",
+    name: "product name",
+    img: "https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/19818628/2022/9/6/ec27eee6-d613-4423-8e0f-007aea1603c31662468109188Shirts1.jpg",
+    description: "Men Black Tapered Fit Mid-Rise Clean Look Stretchable Jeans",
+    price: <span>&#x20B9;200</span>,    category: "silicon",
+  },
+  {
+    id: "2",
+    name: "product name",
+    img: "https://rukminim2.flixcart.com/image/850/1000/xif0q/shopsy-shirt/o/x/j/s-spsy-63-shirt-full-shirtify-original-imagn5hpbwzffpek.jpeg?q=90&crop=false",
+    price: <span>&#x20B9;200</span>,    category: "silicon",
+  },
+  {
+    id: "3",
+    name: "product name",
+    img: "https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/19818628/2022/9/6/ec27eee6-d613-4423-8e0f-007aea1603c31662468109188Shirts1.jpg",
+    price: <span>&#x20B9;200</span>,    category: "silicon",
+  },
+  {
+    id: "4",
+    name: "product name",
+    img: "https://rukminim2.flixcart.com/image/850/1000/xif0q/shopsy-shirt/o/x/j/s-spsy-63-shirt-full-shirtify-original-imagn5hpbwzffpek.jpeg?q=90&crop=false",
+    price: <span>&#x20B9;200</span>,
+    category: "silicon",
+  },
+  {
+    id: "5",
+    name: "product name",
+    img: "https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/19818628/2022/9/6/ec27eee6-d613-4423-8e0f-007aea1603c31662468109188Shirts1.jpg",
+    price: <span>&#x20B9;200</span>,    category: "silicon",
+  },
+  {
+    id: "6",
+    name: "product name",
+    img: "https://rukminim2.flixcart.com/image/850/1000/xif0q/shopsy-shirt/o/x/j/s-spsy-63-shirt-full-shirtify-original-imagn5hpbwzffpek.jpeg?q=90&crop=false",
+    price: <span>&#x20B9;200</span>,    category: "silicon",
+  },
+  {
+    id: "7",
+    name: "product name",
+    img: "https://assets.myntassets.com/dpr_1.5,q_60,w_400,c_limit,fl_progressive/assets/images/19818628/2022/9/6/ec27eee6-d613-4423-8e0f-007aea1603c31662468109188Shirts1.jpg",
+    price: <span>&#x20B9;200</span>,    category: "silicon",
+  },
+  {
+    id: "8",
+    name: "product name",
+    img: "https://rukminim2.flixcart.com/image/850/1000/xif0q/shopsy-shirt/o/x/j/s-spsy-63-shirt-full-shirtify-original-imagn5hpbwzffpek.jpeg?q=90&crop=false",
+    price: <span>&#x20B9;200</span>,    category: "silicon",
+  },
+];
+
+export { products };

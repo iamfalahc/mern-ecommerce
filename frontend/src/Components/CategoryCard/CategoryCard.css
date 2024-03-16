@@ -1,0 +1,28 @@
+.category-card-wrapper {
+  display: flex;
+  width: 100%;
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+  box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+  
+  transition:transform 0.5s; 
+}
+
+.category-card-wrapper:hover{
+  transform: scale(1.05);
+}
+
+.category-img {
+  width: 30%;
+  width: 300px;
+  height: 400px;
+}
+.category-card-wrapper .category-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.category-card span{
+ font-size: 25px;
+ text-decoration: solid;
+ font-weight: 600;
+}

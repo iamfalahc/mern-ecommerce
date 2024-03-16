@@ -3,42 +3,55 @@ import React, { useEffect, useState } from "react";
 import Input from "../../../Components/InputField/Input";
 import Button from "../../../Components/Button/Button";
 import FormCard from "../../../Components/FormCard/FormCard";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
+import {userLogIn} from"../../../Services/userApi.js"
 
 import {
-  userNameValidation,
   userPasswordValidation,
 } from "../../../Utils/validation.js";
 
+
 function Login() {
   const [inputs, setInputs] = useState({
-    fname: "",
+    email: "",
     password: "",
   });
-  const [errors,setErrors] = useState({
-    fname: "",
-    password: "",
-  })
+  const [errors, setErrors] = useState({
+    // email: "",
+    password: undefined,
+  });
   const navigate = useNavigate();
 
   const onLogin = (event) => {
     console.log("login");
     event.preventDefault();
-    setErrors((preValue)=>{
-      return{...preValue,"fname":userNameValidation(inputs.fname)}
+    setErrors((preValue) => {
+      return { ...preValue, password: userPasswordValidation(inputs.password) };
     });
-    setErrors((preValue)=>{
-      return{...preValue,"password":userPasswordValidation(inputs.password)}
 
-    });
-navigate('/');
     
   };
+  
+  const postUserLogin = async () => {
+    
+    try {
+      const response = await userLogIn(inputs)
+      console.log(response)
+      if(response.status === 200) {
+        localStorage.setItem('isAuthenticated', true);
+        window.location.reload()
+        navigate("/");
+      }
+
+    } catch (error) {
+      console.log('error', error)
+    }
+  }
   useEffect(() => {
-    console.log(errors)
-  }, [errors])
-  
-  
+    console.log(errors);
+    if ( errors.password !== "") return
+    postUserLogin()
+  }, [errors.password]);
 
   return (
     <div className="page">
@@ -49,10 +62,9 @@ navigate('/');
           type="text"
           id="loginUserName"
           isRequired={true}
-          name="fname"
+          name="email"
           setValue={setInputs}
-          errorMessage={errors.fname}
-
+          // errorMessage={errors.email}
         />{" "}
         <Input
           label="Password"

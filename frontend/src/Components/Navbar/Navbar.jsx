@@ -1,47 +1,198 @@
-import React from 'react'
-import "./Navbar.css"
+import React from "react";
+import "./Navbar.css";
+import { Link } from "react-router-dom";
 
 function Navbar() {
-  return (
-    <div className='navbar'>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Craab</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"/></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
-    </div>
-  )
+function handleLogOut() {
+  localStorage.setItem("isAuthenticated",false)
+  window.location.reload()
 }
 
-export default Navbar
+  return (
+    <div className="navbar">
+      <div className="left-wrapper">
+        <Link to={"/"}>
+        <svg
+          
+          width="64px"
+          height="64px"
+          viewBox="0 0 1024 1024"
+          class="icon"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="#000000"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></g>
+          <g id="SVGRepo_iconCarrier">
+            <path
+              d="M838.4 819.2c0 14.08-11.52 25.6-25.6 25.6h-563.2c-14.08 0-25.6-11.52-25.6-25.6V243.2c0-14.08 11.52-25.6 25.6-25.6h563.2c14.08 0 25.6 11.52 25.6 25.6v576z"
+              fill="#F7E6A3"
+            ></path>
+            <path
+              d="M812.8 857.6h-563.2c-21.76 0-38.4-16.64-38.4-38.4V243.2c0-21.76 16.64-38.4 38.4-38.4h563.2c21.76 0 38.4 16.64 38.4 38.4v576c0 21.76-16.64 38.4-38.4 38.4z m-563.2-627.2c-7.68 0-12.8 5.12-12.8 12.8v576c0 7.68 5.12 12.8 12.8 12.8h563.2c7.68 0 12.8-5.12 12.8-12.8V243.2c0-7.68-5.12-12.8-12.8-12.8h-563.2z"
+              fill="#231C1C"
+            ></path>
+            <path
+              d="M224 512m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z"
+              fill="#E42710"
+            ></path>
+            <path
+              d="M224 601.6c-49.92 0-89.6-39.68-89.6-89.6s39.68-89.6 89.6-89.6 89.6 39.68 89.6 89.6-39.68 89.6-89.6 89.6z m0-153.6c-35.84 0-64 28.16-64 64s28.16 64 64 64 64-28.16 64-64-28.16-64-64-64z"
+              fill="#231C1C"
+            ></path>
+            <path
+              d="M838.4 512m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z"
+              fill="#E42710"
+            ></path>
+            <path
+              d="M838.4 601.6c-49.92 0-89.6-39.68-89.6-89.6s39.68-89.6 89.6-89.6 89.6 39.68 89.6 89.6-39.68 89.6-89.6 89.6z m0-153.6c-35.84 0-64 28.16-64 64s28.16 64 64 64 64-28.16 64-64-28.16-64-64-64z"
+              fill="#231C1C"
+            ></path>
+            <path
+              d="M761.6 691.2c0 14.08-11.52 25.6-25.6 25.6h-409.6c-14.08 0-25.6-11.52-25.6-25.6V358.4c0-14.08 11.52-25.6 25.6-25.6h409.6c14.08 0 25.6 11.52 25.6 25.6v332.8z"
+              fill="#6FB0BE"
+            ></path>
+            <path
+              d="M736 729.6h-409.6c-21.76 0-38.4-16.64-38.4-38.4V358.4c0-21.76 16.64-38.4 38.4-38.4h409.6c21.76 0 38.4 16.64 38.4 38.4v332.8c0 21.76-16.64 38.4-38.4 38.4z m-409.6-384c-7.68 0-12.8 5.12-12.8 12.8v332.8c0 7.68 5.12 12.8 12.8 12.8h409.6c7.68 0 12.8-5.12 12.8-12.8V358.4c0-7.68-5.12-12.8-12.8-12.8h-409.6z"
+              fill="#231C1C"
+            ></path>
+            <path
+              d="M531.2 512m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z"
+              fill="#E42710"
+            ></path>
+            <path
+              d="M531.2 601.6c-49.92 0-89.6-39.68-89.6-89.6s39.68-89.6 89.6-89.6 89.6 39.68 89.6 89.6-39.68 89.6-89.6 89.6z m0-153.6c-35.84 0-64 28.16-64 64s28.16 64 64 64 64-28.16 64-64-28.16-64-64-64z"
+              fill="#231C1C"
+            ></path>
+            <path d="M915.2 512h-768l51.2-230.4h665.6z" fill="#E42710"></path>
+            <path
+              d="M915.2 524.8h-768c-3.84 0-7.68-1.28-10.24-5.12-2.56-2.56-3.84-6.4-2.56-10.24l51.2-230.4c1.28-6.4 6.4-10.24 12.8-10.24h665.6c6.4 0 11.52 3.84 12.8 10.24l51.2 230.4c1.28 3.84 0 7.68-2.56 10.24-2.56 3.84-6.4 5.12-10.24 5.12z m-752.64-25.6h736l-46.08-204.8H208.64l-46.08 204.8z"
+              fill="#231C1C"
+            ></path>
+            <path
+              d="M377.6 512m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z"
+              fill="#FAF1C7"
+            ></path>
+            <path
+              d="M377.6 601.6c-49.92 0-89.6-39.68-89.6-89.6s39.68-89.6 89.6-89.6 89.6 39.68 89.6 89.6-39.68 89.6-89.6 89.6z m0-153.6c-35.84 0-64 28.16-64 64s28.16 64 64 64 64-28.16 64-64-28.16-64-64-64z"
+              fill="#231C1C"
+            ></path>
+            <path
+              d="M684.8 512m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z"
+              fill="#FAF1C7"
+            ></path>
+            <path
+              d="M684.8 601.6c-49.92 0-89.6-39.68-89.6-89.6s39.68-89.6 89.6-89.6 89.6 39.68 89.6 89.6-39.68 89.6-89.6 89.6z m0-153.6c-35.84 0-64 28.16-64 64s28.16 64 64 64 64-28.16 64-64-28.16-64-64-64z"
+              fill="#231C1C"
+            ></path>
+            <path d="M454.4 512h-153.6l25.6-230.4h140.8z" fill="#FAF1C7"></path>
+            <path
+              d="M454.4 524.8h-153.6c-3.84 0-7.68-1.28-8.96-3.84-2.56-2.56-3.84-6.4-2.56-10.24l25.6-230.4c1.28-6.4 6.4-11.52 12.8-11.52h140.8c3.84 0 6.4 1.28 8.96 3.84 2.56 2.56 3.84 6.4 3.84 8.96l-12.8 230.4c-1.28 7.68-7.68 12.8-14.08 12.8z m-139.52-25.6h126.72l11.52-204.8h-115.2l-23.04 204.8z"
+              fill="#231C1C"
+            ></path>
+            <path
+              d="M761.6 512h-153.6l-12.8-230.4h140.8z"
+              fill="#FAF1C7"
+            ></path>
+            <path
+              d="M761.6 524.8h-153.6c-6.4 0-12.8-5.12-12.8-11.52l-12.8-230.4c0-3.84 1.28-6.4 3.84-8.96 2.56-2.56 6.4-3.84 8.96-3.84h140.8c6.4 0 11.52 5.12 12.8 11.52l25.6 230.4c0 3.84-1.28 7.68-2.56 10.24s-6.4 2.56-10.24 2.56z m-142.08-25.6h126.72l-23.04-204.8h-115.2l11.52 204.8z"
+              fill="#231C1C"
+            ></path>
+          </g>
+        </svg>
+        </Link>
+        {" "}
+        <div className="nav-link-wrapper">
+          <Link to={"/category/men"}><span>MEN</span></Link>
+          <Link to={"/category/women"}><span>WOMEN</span></Link>
+          <Link to={"/category/kids"}><span>KIDS</span></Link>
+          
+          
+          
+        </div>
+      </div>
+      <div className="right-wrapper">
+        <div className="search">
+          <svg className="search-icon"
+            width="64px"
+            height="64px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              {" "}
+              <g clip-path="url(#clip0_15_152)">
+                {" "}
+                <rect width="24" height="24" fill="none"></rect>{" "}
+                <circle
+                  cx="10.5"
+                  cy="10.5"
+                  r="6.5"
+                  stroke="#000000"
+                  stroke-linejoin="round"
+                ></circle>{" "}
+                <path
+                  d="M19.6464 20.3536C19.8417 20.5488 20.1583 20.5488 20.3536 20.3536C20.5488 20.1583 20.5488 19.8417 20.3536 19.6464L19.6464 20.3536ZM20.3536 19.6464L15.3536 14.6464L14.6464 15.3536L19.6464 20.3536L20.3536 19.6464Z"
+                  fill="#000000"
+                ></path>{" "}
+              </g>{" "}
+              <defs>
+                {" "}
+                <clipPath id="clip0_15_152">
+                  {" "}
+                  <rect width="24" height="24" fill="white"></rect>{" "}
+                </clipPath>{" "}
+              </defs>{" "}
+            </g>
+          </svg>
+          <input type="text" placeholder="Search for products and more . . ." />
+        </div>
+        
+        <div className="cart right-icons">
+          <svg
+            width="64px"
+            height="64px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              {" "}
+              <path
+                d="M6.29977 5H21L19 12H7.37671M20 16H8L6 3H3M9 20C9 20.5523 8.55228 21 8 21C7.44772 21 7 20.5523 7 20C7 19.4477 7.44772 19 8 19C8.55228 19 9 19.4477 9 20ZM20 20C20 20.5523 19.5523 21 19 21C18.4477 21 18 20.5523 18 20C18 19.4477 18.4477 19 19 19C19.5523 19 20 19.4477 20 20Z"
+                stroke="#000000"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>{" "}
+            </g>
+          </svg>
+          <span>Cart</span>
+        </div>
+        <div className="profile right-icons" onClick={handleLogOut}>
+        <svg width="68px" height="68px" viewBox="0 -0.5 25 25" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#000000" stroke-width="0.4"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M11.75 9.874C11.75 10.2882 12.0858 10.624 12.5 10.624C12.9142 10.624 13.25 10.2882 13.25 9.874H11.75ZM13.25 4C13.25 3.58579 12.9142 3.25 12.5 3.25C12.0858 3.25 11.75 3.58579 11.75 4H13.25ZM9.81082 6.66156C10.1878 6.48991 10.3542 6.04515 10.1826 5.66818C10.0109 5.29121 9.56615 5.12478 9.18918 5.29644L9.81082 6.66156ZM5.5 12.16L4.7499 12.1561L4.75005 12.1687L5.5 12.16ZM12.5 19L12.5086 18.25C12.5029 18.25 12.4971 18.25 12.4914 18.25L12.5 19ZM19.5 12.16L20.2501 12.1687L20.25 12.1561L19.5 12.16ZM15.8108 5.29644C15.4338 5.12478 14.9891 5.29121 14.8174 5.66818C14.6458 6.04515 14.8122 6.48991 15.1892 6.66156L15.8108 5.29644ZM13.25 9.874V4H11.75V9.874H13.25ZM9.18918 5.29644C6.49843 6.52171 4.7655 9.19951 4.75001 12.1561L6.24999 12.1639C6.26242 9.79237 7.65246 7.6444 9.81082 6.66156L9.18918 5.29644ZM4.75005 12.1687C4.79935 16.4046 8.27278 19.7986 12.5086 19.75L12.4914 18.25C9.08384 18.2892 6.28961 15.5588 6.24995 12.1513L4.75005 12.1687ZM12.4914 19.75C16.7272 19.7986 20.2007 16.4046 20.2499 12.1687L18.7501 12.1513C18.7104 15.5588 15.9162 18.2892 12.5086 18.25L12.4914 19.75ZM20.25 12.1561C20.2345 9.19951 18.5016 6.52171 15.8108 5.29644L15.1892 6.66156C17.3475 7.6444 18.7376 9.79237 18.75 12.1639L20.25 12.1561Z" fill="#000000"></path> </g></svg>          <span>Log Out</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Navbar;

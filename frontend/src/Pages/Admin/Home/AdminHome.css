@@ -1,0 +1,26 @@
+table,
+th,
+td,
+tr {
+  border: 1px solid;
+  padding: 10px;text-align: center;
+}
+th {
+  width: 400px;
+}
+.admin-home-top{
+    display: flex;
+ 
+    align-items: center;
+   
+    gap: 450px;
+    
+    padding: 20px;
+}
+.admin-home{
+    padding: 20px;
+}
+.number-row{
+    width: 50px;
+}
+

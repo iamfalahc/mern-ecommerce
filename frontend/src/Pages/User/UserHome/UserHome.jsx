@@ -1,7 +1,8 @@
 import React from 'react'
 import Navbar from '../../../Components/Navbar/Navbar';
-import ProductCard from '../../../Components/ProductCard/ProductCard';
-import { products } from '../../../DummyDatas/DummyDatas';
+import Footer from '../../../Components/Footer/Footer';
+import CategoryCard from '../../../Components/CategoryCard/CategoryCard';
+import { categoryItems } from '../../../DummyDatas/Category';
 import "./UserHome.css"
 
 function UserHome() {
@@ -9,14 +10,15 @@ function UserHome() {
     <div className='user-home-container'>
     <Navbar />
     <main>
-      <div className="products-container">
-        {products.map((product)=>{
-          return <ProductCard
-          product={product}
-          key={product.id}/>
+      <div className="category-container">
+        {categoryItems.map((categoryItem)=>{
+          return <CategoryCard
+          categoryItem={categoryItem}
+          key={categoryItem.id}/>
         })}
       </div>
     </main>
+    <Footer/>
     </div>
   )
 }

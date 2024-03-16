@@ -1,0 +1,37 @@
+.footer {
+  padding: 30px;
+  background-color: beige;
+  text-align: center;
+}
+.footer-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 84px;
+}
+.instagram {
+  align-content: center;
+}
+.instagram svg {
+  width: 34px;
+}
+.facebook {
+  align-content: center;
+}
+.facebook svg {
+  width: 25px;
+}
+.twitter {
+  align-content: center;
+  padding-left: 5px;
+}
+.twitter svg {
+  width: 25px;
+}
+.footer-middle{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
