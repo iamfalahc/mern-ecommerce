@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect } from "react"; 
 import "./ProductDetail.css";
 import { useSearchParams } from "react-router-dom";
 import { products } from "../../../DummyDatas/DummyDatas";

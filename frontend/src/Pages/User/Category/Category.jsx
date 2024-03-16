@@ -4,7 +4,7 @@ import ProductCard from "../../../Components/ProductCard/ProductCard";
 // import { products } from "../../../DummyDatas/DummyDatas";
 import "./Category.css";
 import Footer from "../../../Components/Footer/Footer";
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom"; 
 import { getProductByCategory } from "../../../Services/productApi";
 
 function Category() {
