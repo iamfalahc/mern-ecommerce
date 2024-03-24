@@ -2,6 +2,7 @@ import React from "react";
 import "./CreatePage.css";
 import Button from "../../../Components/Button/Button";
 import { useState } from "react";
+import { createProduct } from "../../../Services/productApi";
 
 function CreatePage() {
   const [details, setDetails] = useState({
@@ -19,12 +20,24 @@ function CreatePage() {
     }));
   }
 
-  function handleCreate() {
-    console.log(details);
+ async function handleCreate(event) {
+    event.preventDefault()
+    try {
+      const response = await createProduct(details)
+      console.log(response)
+      if(response.status === 201) {
+        alert("product added successfully")
+       
+      }
+
+    } catch (error) {
+      console.log('error', error)
+    }
   }
   return (
     <div className="create-page">
-      <form action="" className="product-create-fields">
+      <h1>Add product</h1>
+      <form action="" className="product-create-fields" onSubmit={handleCreate}>
         <div className="input-container product-name-field">
           <label htmlFor="productName">Product name:</label>
           <input
@@ -33,7 +46,6 @@ function CreatePage() {
             name="name"
             value={details.name}
             onChange={handleChange}
-
           />
         </div>
         <div className="input-container product-image-field">
@@ -63,6 +75,7 @@ function CreatePage() {
             id="productPrice"
             name="price"
             value={details.price}
+
             onChange={handleChange}
           />
         </div>
@@ -71,14 +84,15 @@ function CreatePage() {
           <input
             type="text"
             id="productCategory"
-            name="price"
+            name="category"
             value={details.category}
             onChange={handleChange}
           />
         </div>
-      </form>
-      <Button buttonName={"Add"} variant={"primary"} onCreate={handleCreate}
+        <Button buttonName={"Add"} variant={"primary"} 
       />
+      </form>
+     
     </div>
   );
 }

@@ -57,8 +57,8 @@ function Login() {
     <div className="page">
       <FormCard title={"Login"} type={"Log In"} handleSubmit={onLogin}>
         <Input
-          label="User Name"
-          placeholder="User Name"
+          label="E mail"
+          placeholder="E mail"
           type="text"
           id="loginUserName"
           isRequired={true}

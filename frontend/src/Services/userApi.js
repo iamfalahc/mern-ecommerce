@@ -6,3 +6,6 @@ export const userSignUp = (values) => {
 export const userLogIn = (values) => {
   return userInstance.post("/api/login", { ...values });
 };
+export const adminLogIn = (values) => {
+  return userInstance.post("/api/admin/login", { ...values });
+};

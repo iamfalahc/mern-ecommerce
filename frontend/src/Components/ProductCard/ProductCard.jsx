@@ -4,14 +4,10 @@ import { createSearchParams, useNavigate } from 'react-router-dom';
 
 function ProductCard({ product }) {
     const navigate = useNavigate();
-    const handleClick=(event)=>{
+    const handleClick=()=>{
         navigate({
-            pathname: "/product-detail",
-            search: createSearchParams({
-                id: product.id
-            }).toString()
+            pathname: "/product-detail/"+product._id,
         });
-        console.log("clicked")
     }
   return (
     <div onClick={handleClick} className="product-card">

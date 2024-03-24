@@ -10,8 +10,6 @@ import { getProductByCategory } from "../../../Services/productApi";
 function Category() {
   const { id } = useParams();
   const [products, setProducts] = useState([]);
-
-  
   
   useEffect( () => {
     const fetchData = async () => {
@@ -25,6 +23,8 @@ function Category() {
 
     fetchData();
   }, [id]);
+
+  
 
   return (
     <div className="category-wise-page-container">

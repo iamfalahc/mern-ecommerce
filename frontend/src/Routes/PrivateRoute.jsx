@@ -12,7 +12,7 @@ function PrivateRoute() {
     <div>
          <Routes>
       <Route path="/" Component={UserHome}/>
-      <Route path="/product-detail" Component={ProductDetail}/>
+      <Route path="/product-detail/:id" Component={ProductDetail}/>
       <Route path="/category/:id" Component={Category}/>
       <Route path="/admin-home" Component={AdminHome}/>
       <Route path="/admin-create-page" Component={CreatePage}/>
