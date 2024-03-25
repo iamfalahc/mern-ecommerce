@@ -2,10 +2,16 @@ import React, { useEffect, useState } from "react";
 import "./AdminHome.css";
 import Button from "../../../Components/Button/Button";
 import { Link } from "react-router-dom";
-import { listProduct } from "../../../Services/productApi";
+import { deleteProduct, listProduct } from "../../../Services/productApi";
 
 function AdminHome() {
   const [products, setProducts] = useState([]);
+
+  function adminLogOut() {
+    localStorage.setItem("isAuthenticatedAdmin",false)
+    window.location.reload()
+  }
+
   useEffect(() => {
     getAllProductList();
   }, []);
@@ -21,6 +27,19 @@ function AdminHome() {
       console.log("error", error);
     }
   }
+
+  async function handleDelete(id) {
+    try {
+      const response = await deleteProduct(id);
+      console.log(response);
+      if (response.status === 200) {
+       alert("product deleted")
+       window.location.reload()      
+      }
+    } catch (error) {
+      console.log("error", error);
+    }
+  }
   return (
     <main className="admin-home">
       <section className="admin-home-top">
@@ -28,6 +47,7 @@ function AdminHome() {
           <Button buttonName="Add product" variant={"primary"} />
         </Link>
         <h4>Admin home</h4>
+        <Button buttonName="Log Out" variant={"primary"} onCreate={adminLogOut} />
       </section>
       <section className="table-wrapper">
         <table>
@@ -46,15 +66,13 @@ function AdminHome() {
                     <td>{product.name}</td>
                     <td>{product.category}</td>
                     <td>{product.price}</td>
-                    <td>
+                    <td className="button-td">
                       {
                         <Link to={`/admin-edit-page/${product._id}`}>
-                          <Button
-                            buttonName="Edit product"
-                            variant={"primary"}
-                          />
+                          <Button buttonName="Edit" variant={"primary"} />
                         </Link>
                       }
+                      {<Button buttonName="Delete" variant={"tertiary"} onCreate={() => handleDelete(product._id)}  />}
                     </td>
                   </tr>
                 );

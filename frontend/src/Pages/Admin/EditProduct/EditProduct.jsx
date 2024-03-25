@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./EditProduct.css"
 import Button from '../../../Components/Button/Button';
+import { useParams } from 'react-router-dom';
+import { editProduct, getSingleProduct } from '../../../Services/productApi';
 function EditProduct() {
+  const [product,setProduct] = useState({})
  const [details, setDetails] = useState({
     name: "",
     image: "",
@@ -9,6 +12,23 @@ function EditProduct() {
     price: "",
     category:""
   });
+  const { id } = useParams();
+  
+  useEffect( () => {
+    const fetchData = async () => {
+      try {
+        const response = await getSingleProduct(id);
+        // setProduct(response.data);
+        setDetails(response.data);
+        
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchData();
+  }, [id]);
   function handleChange(event) {
     const { name, value } = event.target;
     setDetails(prevDetails => ({
@@ -17,12 +37,23 @@ function EditProduct() {
     }));
   }
   
- function handleEdit() {
-    console.log(details)
- }
+  async function handleEdit(event) {
+    event.preventDefault()
+    try {
+      const response = await editProduct(id, details)
+      console.log(response)
+      if(response.status === 200) {
+        alert("product edited successfully")
+       
+      }
+
+    } catch (error) {
+      console.log('error', error)
+    }
+  }
   return (
     <div className="create-page">
-      <form action="" className="product-create-fields">
+      <form action="" className="product-create-fields" onSubmit={handleEdit} >
         <div className="input-container product-name-field">
           <label htmlFor="productName">Product name:</label>
           <input
@@ -73,13 +104,12 @@ function EditProduct() {
             onChange={handleChange}
           />
         </div>
-      </form>
-      <Button
+        <Button
         buttonName={"Edit product"}
         variant={"primary"}
-        onCreate={handleEdit}
-        
       />
+      </form>
+
     </div>
   );
 }

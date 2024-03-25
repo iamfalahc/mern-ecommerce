@@ -23,4 +23,9 @@ th {
 .number-row{
     width: 50px;
 }
-
+.button-td{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  border: 0;
+}

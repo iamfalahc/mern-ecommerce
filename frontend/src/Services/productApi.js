@@ -12,3 +12,9 @@ export const createProduct = (values) => {
 export const listProduct = () => {
   return productInstance.get(`/api/products`);
 };
+export const editProduct = (id,values) => {
+  return productInstance.put(`/api/admin/product/${id}`, { ...values });
+};
+export const deleteProduct = (id) => {
+  return productInstance.delete(`/api/admin/product/${id}`);
+};

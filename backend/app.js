@@ -134,7 +134,7 @@ app.delete("/api/admin/product/:id", async (req, res) => {
     }
 
     // Return the deleted product as a JSON response
-    res.json({ message: "successfully deleted", deletedProduct });
+    res.status(200).json({ message: "successfully deleted", deletedProduct });
   } catch (error) {
     console.error("Error deleting product:", error);
     res.status(500).json({ message: "Internal server error" });
