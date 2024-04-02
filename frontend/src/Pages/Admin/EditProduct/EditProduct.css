@@ -1,6 +1,6 @@
 
 .create-page {
-    padding: 30px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,14 +8,14 @@
   }
   
   .product-create-fields {
-    border: 2px solid rgb(45, 58, 116);
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     align-items: center;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 10px;
     width: 50%; 
     margin: auto;
-    padding: 20px;
+    padding: 10px;
   }
   
   .product-create-fields label {

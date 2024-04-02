@@ -17,23 +17,45 @@ function CreatePage() {
     setDetails((prevDetails) => ({
       ...prevDetails,
       [name]: value,
-    }));
+    })
+    );
+    console.log(event.target.value);
   }
 
- async function handleCreate(event) {
-    event.preventDefault()
-    try {
-      const response = await createProduct(details)
-      console.log(response)
-      if(response.status === 201) {
-        alert("product added successfully")
+//  async function handleCreate(event) {
+//     event.preventDefault()
+//     try {
+//       const response = await createProduct(details)
+//       console.log(response)
+//       if(response.status === 201) {
+//         alert("product added successfully")
        
-      }
+//       }
 
-    } catch (error) {
-      console.log('error', error)
+//     } catch (error) {
+//       console.log('error', error)
+//     }
+//   }
+async function handleCreate(event) {
+  event.preventDefault();
+  try {
+    const formData = new FormData();
+    formData.append('name', details.name);
+    formData.append('description', details.description);
+    formData.append('price', details.price);
+    formData.append('category', details.category);
+    formData.append('image', details.image); // Assuming details.image is the file object
+
+    const response = await createProduct(formData);
+    console.log(response);
+    if (response.status === 201) {
+      alert("product added successfully");
     }
+  } catch (error) {
+    console.log('error', error);
   }
+}
+
   return (
     <div className="create-page">
       <h1>Add product</h1>

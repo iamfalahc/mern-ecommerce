@@ -13,13 +13,13 @@
 }
 .secondary{
   border: 0;
-  background-color: white;
-  color:  rgb(63, 83, 175);
+  background-color: rgb(247, 244, 244);
+  color:  rgb(8, 8, 8);
   border: 1px solid  rgb(63, 83, 175);
 }
 .tertiary{
   border: 0;
-  background-color: rgb(175, 5, 5);
+  background-color: rgb(201, 26, 26);
   color:  rgb(255, 255, 255);
   border: 1px solid  rgb(63, 83, 175);
 }

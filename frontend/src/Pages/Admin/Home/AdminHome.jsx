@@ -47,7 +47,7 @@ function AdminHome() {
           <Button buttonName="Add product" variant={"primary"} />
         </Link>
         <h4>Admin home</h4>
-        <Button buttonName="Log Out" variant={"primary"} onCreate={adminLogOut} />
+        <Button buttonName="Log Out" variant={"secondary"} onCreate={adminLogOut} />
       </section>
       <section className="table-wrapper">
         <table>
