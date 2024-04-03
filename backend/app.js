@@ -8,6 +8,19 @@ const Product = require("./Models/productModel");
 const User = require("./Models/userModel");
 const mongoose = require("mongoose");
 const bcrypt = require ("bcrypt")
+const multer = require("multer")
+const path = require("path");
+
+const storage = multer.diskStorage({
+  destination : (req,file,cb)=>{
+      cb(null,"public/Images")
+  },
+  filename:(req,file,cb)=>{
+      cb(null,file.fieldname+ "_"+Date.now()+path.extname(file.originalname))
+  }
+})
+
+const upload = multer({ storage: storage });
 
 //DATABASE CONNECTION
 
@@ -25,8 +38,26 @@ app.get("/product", (req, res) => {
 
 //CREATE PRODUCT
 
-app.post("/api/admin/product", async (req, res) => {
-  console.log(req.body);
+// app.post("/api/admin/product", async (req, res) => {
+//   console.log(req.body);
+//   const payload = req.body;
+//   try {
+//     const product = new Product({
+//       name: payload.name,
+//       category: payload.category,
+//       price: payload.price,
+//       description: payload.description,
+//     });
+//     await product.save();
+//     res.status(201).json(product);
+//   } catch (error) {
+//     res.status(500).json({ message: "server error" });
+//   }
+//   // res.json({ Response: "successfully recieved" });
+// });
+app.post("/api/admin/product", upload.single('image'), async (req, res) => {
+  console.log(req.body); // Your other form fields
+  console.log(req.file); // Information about the uploaded file
   const payload = req.body;
   try {
     const product = new Product({
@@ -34,13 +65,13 @@ app.post("/api/admin/product", async (req, res) => {
       category: payload.category,
       price: payload.price,
       description: payload.description,
+      image: req.file.filename // Assuming you save the filename in the database
     });
     await product.save();
     res.status(201).json(product);
   } catch (error) {
     res.status(500).json({ message: "server error" });
   }
-  // res.json({ Response: "successfully recieved" });
 });
 
 
