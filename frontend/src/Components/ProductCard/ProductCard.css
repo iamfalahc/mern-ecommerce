@@ -1,7 +1,7 @@
 .product-card{
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 290px;
     transition:transform 0.5s; 
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
     
@@ -17,7 +17,7 @@
    
 }
 .product-card .product-image{
-    width: 300px;
+    width: 280px;
     height: 400px;
     object-fit:cover;
 }
