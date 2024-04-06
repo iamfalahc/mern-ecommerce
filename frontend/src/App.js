@@ -12,10 +12,6 @@ function App() {
   return (
     <BrowserRouter>
       {isAuthenticated ? <PrivateRoute /> : (isAuthenticatedAdmin ? <AdminRoute /> : <PublicRoute /> ) }
-      {/* <Login />
-   <SignUp /> */}
-      {/* <PrivateRoute />
-      <PublicRoute /> */}
     </BrowserRouter>
   );
 }

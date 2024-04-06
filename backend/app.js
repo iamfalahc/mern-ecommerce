@@ -1,3 +1,4 @@
+
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -10,7 +11,8 @@ const mongoose = require("mongoose");
 const bcrypt = require ("bcrypt")
 const multer = require("multer")
 const path = require("path");
-
+ 
+// MULTER CONFIGURATION FOR FILE UPLOADS
 const storage = multer.diskStorage({
   destination : (req,file,cb)=>{
       cb(null,"public/Images")
@@ -19,64 +21,47 @@ const storage = multer.diskStorage({
       cb(null,file.fieldname+ "_"+Date.now()+path.extname(file.originalname))
   }
 })
-
 const upload = multer({ storage: storage });
 
-//DATABASE CONNECTION
-
+// CONNECT TO DATABASE
 connectDB();
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static("public"))
 
-
-//PRODUCT
-
+// ROUTE TO FETCH ALL PRODUCTS
 app.get("/product", (req, res) => {
   res.json("all products");
 });
 
-
-//CREATE PRODUCT
-
-// app.post("/api/admin/product", async (req, res) => {
-//   console.log(req.body);
-//   const payload = req.body;
-//   try {
-//     const product = new Product({
-//       name: payload.name,
-//       category: payload.category,
-//       price: payload.price,
-//       description: payload.description,
-//     });
-//     await product.save();
-//     res.status(201).json(product);
-//   } catch (error) {
-//     res.status(500).json({ message: "server error" });
-//   }
-//   // res.json({ Response: "successfully recieved" });
-// });
+// CREATE A NEW PRODUCT
 app.post("/api/admin/product", upload.single('image'), async (req, res) => {
-  console.log(req.body); // Your other form fields
-  console.log(req.file); // Information about the uploaded file
+  // Log the form data and uploaded file information
+  console.log(req.body);
+  console.log(req.file);
+
+  // Extract product data from request body
   const payload = req.body;
   try {
+    // Create a new product instance
     const product = new Product({
       name: payload.name,
       category: payload.category,
       price: payload.price,
       description: payload.description,
-      image: req.file.filename // Assuming you save the filename in the database
+      image: req.file.filename // Store the filename in the database
     });
+    // Save the product to the database
     await product.save();
+    // Return the newly created product as JSON response
     res.status(201).json(product);
   } catch (error) {
+    // Handle server error if any
     res.status(500).json({ message: "server error" });
   }
 });
 
-
-//GET SINGLE PRODUCT
-
+// FETCH A SINGLE PRODUCT BY ID
 app.get("/api/product/:id", async (req, res) => {
   try {
     // Find the product by ID
@@ -91,17 +76,17 @@ app.get("/api/product/:id", async (req, res) => {
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
     }
-    // If product found, return it
+    
+    // If product found, return it as JSON response
     res.json(product);
   } catch (error) {
+    // Handle server error if any
     console.error("Error retrieving product:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 });
 
-
-//get all products
-
+// FETCH ALL PRODUCTS
 app.get("/api/products", async (req, res) => {
   try {
     // Retrieve all products from the database
@@ -109,24 +94,28 @@ app.get("/api/products", async (req, res) => {
     // Return the products as a JSON response
     res.json(products);
   } catch (error) {
+    // Handle server error if any
     console.error("Error retrieving products:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 });
-// Route to retrieve products by category
+
+// FETCH PRODUCTS BY CATEGORY
 app.get('/api/products/:category', async (req, res) => {
   const category = req.params.category;
   try {
+      // Find products by category
       const products = await Product.find({ category });
+      // Return products as a JSON response
       res.json(products);
   } catch (error) {
+      // Handle server error if any
       console.error(error);
       res.status(500).json({ message: 'Internal Server Error' });
   }
 });
 
-//EDIT PRODUCT
-
+// UPDATE A PRODUCT BY ID
 app.put("/api/admin/product/:id", async (req, res) => {
   const productId = req.params.id;
   const updatedProductData = req.body;
@@ -144,90 +133,76 @@ app.put("/api/admin/product/:id", async (req, res) => {
     // Return the updated product as a JSON response
     res.json(product);
   } catch (error) {
+    // Handle server error if any
     console.error("Error updating product:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 });
 
-
-//DELETE PRODUCT
-
+// DELETE A PRODUCT BY ID
 app.delete("/api/admin/product/:id", async (req, res) => {
   const productId = req.params.id;
-
   try {
     // Find the product by ID and remove it from the database
     const deletedProduct = await Product.findByIdAndDelete(productId);
-
     // Check if the product exists
     if (!deletedProduct) {
       return res.status(404).json({ message: "Product not found" });
     }
-
     // Return the deleted product as a JSON response
     res.status(200).json({ message: "successfully deleted", deletedProduct });
   } catch (error) {
+    // Handle server error if any
     console.error("Error deleting product:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 });
 
-
-//SIGN UP
-
+// USER SIGN UP
 app.post("/api/signup", async (req, res) => {
   const userData = req.body;
   try {
-    // Check if the user already exists in the database (you may need to modify this check based on your user schema)
+    // Check if the user already exists in the database
     const existingUser = await User.findOne({ email: userData.email });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
     }
-    // Create a new user using the user data provided in the request body
+    // Create a new user using the provided user data
     const newUser = new User(userData);
     await newUser.save();
-    // Optionally, you may want to generate a token for the newly registered user and send it back in the response
-    // Return a success message or any additional data as a JSON response
+    // Return success message if user is created successfully
     res.status(201).json({ message: "User created successfully" });
   } catch (error) {
+    // Handle server error if any
     console.error("Error creating user:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 });
 
-
-//LOGIN
-
+// USER LOGIN
 app.post("/api/login", async (req, res) => {
   const { email, password } = req.body;
-  console.log(email, password);
   try {
     // Check if the user exists in the database
     const user = await User.findOne({ email });
-
-    console.log(user); // If user not found, return an error
     if (!user) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
-
     // Check if the password is correct
     const passwordMatch = await bcrypt.compare(password, user.password);
     if (!passwordMatch) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
-
-    // Optionally, you may want to generate a token for the authenticated user and send it back in the response
-    // Return any additional data or success message as a JSON response
+    // Return success message if login is successful
     res.status(200).json({ message: "Login successful", user });
   } catch (error) {
+    // Handle server error if any
     console.error("Error logging in:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 });
 
-
-//ADMIN LOGIN
-
+// ADMIN LOGIN
 app.post("/api/admin/login", (req, res) => {
   const { email, password } = req.body;
   if (email === "admin@gmail.com" && password === "#a12345678") {
@@ -236,9 +211,7 @@ app.post("/api/admin/login", (req, res) => {
   return res.status(401).json({ message: "Invalid email or password" });
 });
 
-
 // START THE SERVER
-
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

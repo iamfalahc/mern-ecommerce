@@ -1,11 +1,10 @@
-// import React from "react";
 import "./FormCard.css";
 import { Link } from "react-router-dom";
 
 function FormCard({ children, title, type, handleSubmit }) {
   // Define a variable to store the JSX content based on the type
   let additionalContent = null;
-  
+
   // Conditionally set the additional content based on the type
   if (type === "Sign Up") {
     additionalContent = (

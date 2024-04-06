@@ -7,7 +7,6 @@ function CategoryCard({ categoryItem }) {
   const handleClick = (event) => {
     navigate({
       pathname: "/category/" + categoryItem.id,
-      
     });
 
     console.log("category clicked");
