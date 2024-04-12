@@ -1,4 +1,3 @@
-
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
@@ -8,26 +7,29 @@ const connectDB = require("./Config/dbConnection");
 const Product = require("./Models/productModel");
 const User = require("./Models/userModel");
 const mongoose = require("mongoose");
-const bcrypt = require ("bcrypt")
-const multer = require("multer")
+const bcrypt = require("bcrypt");
+const multer = require("multer");
 const path = require("path");
- 
+
 // MULTER CONFIGURATION FOR FILE UPLOADS
 const storage = multer.diskStorage({
-  destination : (req,file,cb)=>{
-      cb(null,"public/Images")
+  destination: (req, file, cb) => {
+    cb(null, "public/Images");
   },
-  filename:(req,file,cb)=>{
-      cb(null,file.fieldname+ "_"+Date.now()+path.extname(file.originalname))
-  }
-})
+  filename: (req, file, cb) => {
+    cb(
+      null,
+      file.fieldname + "_" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
 const upload = multer({ storage: storage });
 
 // CONNECT TO DATABASE
 connectDB();
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.static("public"))
+app.use(express.static("public"));
 
 // ROUTE TO FETCH ALL PRODUCTS
 app.get("/product", (req, res) => {
@@ -35,7 +37,7 @@ app.get("/product", (req, res) => {
 });
 
 // CREATE A NEW PRODUCT
-app.post("/api/admin/product", upload.single('image'), async (req, res) => {
+app.post("/api/admin/product", upload.single("image"), async (req, res) => {
   // Log the form data and uploaded file information
   console.log(req.body);
   console.log(req.file);
@@ -49,7 +51,7 @@ app.post("/api/admin/product", upload.single('image'), async (req, res) => {
       category: payload.category,
       price: payload.price,
       description: payload.description,
-      image: req.file.filename // Store the filename in the database
+      image: req.file.filename, // Store the filename in the database
     });
     // Save the product to the database
     await product.save();
@@ -76,7 +78,7 @@ app.get("/api/product/:id", async (req, res) => {
     if (!product) {
       return res.status(404).json({ message: "Product not found" });
     }
-    
+
     // If product found, return it as JSON response
     res.json(product);
   } catch (error) {
@@ -101,17 +103,17 @@ app.get("/api/products", async (req, res) => {
 });
 
 // FETCH PRODUCTS BY CATEGORY
-app.get('/api/products/:category', async (req, res) => {
+app.get("/api/products/:category", async (req, res) => {
   const category = req.params.category;
   try {
-      // Find products by category
-      const products = await Product.find({ category });
-      // Return products as a JSON response
-      res.json(products);
+    // Find products by category
+    const products = await Product.find({ category });
+    // Return products as a JSON response
+    res.json(products);
   } catch (error) {
-      // Handle server error if any
-      console.error(error);
-      res.status(500).json({ message: 'Internal Server Error' });
+    // Handle server error if any
+    console.error(error);
+    res.status(500).json({ message: "Internal Server Error" });
   }
 });
 

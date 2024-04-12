@@ -10,14 +10,14 @@ export const getSingleProduct = (id) => {
   return productInstance.get(`/api/product/${id}`);
 };
 
-// Function to create a new product
-export const createProduct = (values) => {
-  return productInstance.post(`/api/admin/product`, values);
-};
-
 // Function to list all products
 export const listProduct = () => {
   return productInstance.get(`/api/products`);
+};
+
+// Function to create a new product
+export const createProduct = (values) => {
+  return productInstance.post(`/api/admin/product`, values);
 };
 
 // Function to edit an existing product by its ID
