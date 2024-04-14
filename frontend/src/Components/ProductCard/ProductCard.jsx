@@ -12,7 +12,6 @@ function ProductCard({ product }) {
   return (
     <div onClick={handleClick} className="product-card">
      <img className="product-image" src={`http://localhost:4000/Images/${product.image}`} alt="" />
-
       <h5 className="product-name">{product.name}</h5>
       <span className="product-price">{product.price}</span>
     </div>

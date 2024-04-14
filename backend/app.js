@@ -36,33 +36,6 @@ app.get("/product", (req, res) => {
   res.json("all products");
 });
 
-// CREATE A NEW PRODUCT
-app.post("/api/admin/product", upload.single("image"), async (req, res) => {
-  // Log the form data and uploaded file information
-  console.log(req.body);
-  console.log(req.file);
-
-  // Extract product data from request body
-  const payload = req.body;
-  try {
-    // Create a new product instance
-    const product = new Product({
-      name: payload.name,
-      category: payload.category,
-      price: payload.price,
-      description: payload.description,
-      image: req.file.filename, // Store the filename in the database
-    });
-    // Save the product to the database
-    await product.save();
-    // Return the newly created product as JSON response
-    res.status(201).json(product);
-  } catch (error) {
-    // Handle server error if any
-    res.status(500).json({ message: "server error" });
-  }
-});
-
 // FETCH A SINGLE PRODUCT BY ID
 app.get("/api/product/:id", async (req, res) => {
   try {
@@ -117,49 +90,6 @@ app.get("/api/products/:category", async (req, res) => {
   }
 });
 
-// UPDATE A PRODUCT BY ID
-app.put("/api/admin/product/:id", async (req, res) => {
-  const productId = req.params.id;
-  const updatedProductData = req.body;
-  try {
-    // Find the product by ID and update it with the new data
-    const product = await Product.findByIdAndUpdate(
-      productId,
-      updatedProductData,
-      { new: true }
-    );
-    // Check if the product exists
-    if (!product) {
-      return res.status(404).json({ message: "Product not found" });
-    }
-    // Return the updated product as a JSON response
-    res.json(product);
-  } catch (error) {
-    // Handle server error if any
-    console.error("Error updating product:", error);
-    res.status(500).json({ message: "Internal server error" });
-  }
-});
-
-// DELETE A PRODUCT BY ID
-app.delete("/api/admin/product/:id", async (req, res) => {
-  const productId = req.params.id;
-  try {
-    // Find the product by ID and remove it from the database
-    const deletedProduct = await Product.findByIdAndDelete(productId);
-    // Check if the product exists
-    if (!deletedProduct) {
-      return res.status(404).json({ message: "Product not found" });
-    }
-    // Return the deleted product as a JSON response
-    res.status(200).json({ message: "successfully deleted", deletedProduct });
-  } catch (error) {
-    // Handle server error if any
-    console.error("Error deleting product:", error);
-    res.status(500).json({ message: "Internal server error" });
-  }
-});
-
 // USER SIGN UP
 app.post("/api/signup", async (req, res) => {
   const userData = req.body;
@@ -211,6 +141,76 @@ app.post("/api/admin/login", (req, res) => {
     return res.status(200).json({ message: "Login successful" });
   }
   return res.status(401).json({ message: "Invalid email or password" });
+});
+
+// CREATE A NEW PRODUCT
+app.post("/api/admin/product", upload.single("image"), async (req, res) => {
+  // Log the form data and uploaded file information
+  console.log(req.body);
+  console.log(req.file);
+
+  // Extract product data from request body
+  const payload = req.body;
+  try {
+    // Create a new product instance
+    const product = new Product({
+      name: payload.name,
+      category: payload.category,
+      price: payload.price,
+      description: payload.description,
+      image: req.file.filename, // Store the filename in the database
+    });
+    // Save the product to the database
+    await product.save();
+    // Return the newly created product as JSON response
+    res.status(201).json(product);
+  } catch (error) {
+    // Handle server error if any
+    res.status(500).json({ message: "server error" });
+  }
+});
+
+// UPDATE A PRODUCT BY ID
+app.put("/api/admin/product/:id", async (req, res) => {
+  const productId = req.params.id;
+  const updatedProductData = req.body;
+  try {
+    // Find the product by ID and update it with the new data
+    const product = await Product.findByIdAndUpdate(
+      productId,
+      updatedProductData,
+      { new: true }
+    );
+    // Check if the product exists
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+    // Return the updated product as a JSON response
+    res.json(product);
+  } catch (error) {
+    // Handle server error if any
+    console.error("Error updating product:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+// DELETE A PRODUCT BY ID
+app.delete("/api/admin/product/:id", async (req, res) => {
+  const productId = req.params.id;
+  try {
+    // Find the product by ID and remove it from the database
+    const deletedProduct = await Product.findByIdAndDelete(productId);
+    // Check if the product exists
+    if (!deletedProduct) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+    // Return the deleted product as a JSON response
+    res.status(200).json({ message: "successfully deleted", deletedProduct });
+  } catch (error) {
+    // Handle server error if any
+    console.error("Error deleting product:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
 });
 
 // START THE SERVER

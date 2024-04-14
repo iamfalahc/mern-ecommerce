@@ -15,7 +15,10 @@
     gap: 60px;
     align-items: center;
    font-weight: 600;
-  
+}
+.nav-link-wrapper .active{
+   color: rgb(134, 105, 136);
+   
 }
 .nav-link-wrapper a{
     color: inherit;
